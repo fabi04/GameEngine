@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\Shaders">
+      <UniqueIdentifier>{952bdb74-3743-462a-8427-e089443a0d00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Shaders">
+      <UniqueIdentifier>{422bdd2d-ef44-4c76-b5a5-cb4137a1cc7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\renderEngine">
+      <UniqueIdentifier>{9604b6b8-5f60-4ab6-a9b5-2b8e5806cd7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\renderEngine">
+      <UniqueIdentifier>{c304b46b-dd43-411d-992d-1526b65125e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\math">
+      <UniqueIdentifier>{eb67b1dc-0b85-4367-a4fb-ffe5000c93fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\math">
+      <UniqueIdentifier>{6bcfa542-870c-4677-9de5-fb2cc2811220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\entities">
+      <UniqueIdentifier>{da59d021-26ab-4f3d-8370-99dc3f6198c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\entities">
+      <UniqueIdentifier>{b9babc6c-9e5b-488e-bd2f-5feec11c78cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\models">
+      <UniqueIdentifier>{19be76e2-7145-46b5-8586-8984f947976a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\models">
+      <UniqueIdentifier>{d1668f3b-fc56-4c25-ad64-00aa46cba262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\renderEngine\buffers">
+      <UniqueIdentifier>{e9c75644-f6f1-48cf-ba4c-c118daef1506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\renderEngine\buffers">
+      <UniqueIdentifier>{1ddf5b77-0236-4c20-97a5-f137663ea9b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\textures">
+      <UniqueIdentifier>{f5c135ae-af78-45c4-9ceb-df2718afce1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\textures">
+      <UniqueIdentifier>{8418dd40-5c76-4c82-9b1c-2adec0affb2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\eventSystem">
+      <UniqueIdentifier>{5fc8a3cb-93c2-453d-b2b1-1a76e8c4e628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\eventSystem">
+      <UniqueIdentifier>{016ac309-fc63-4e35-95ae-a775b102703c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Quelldateien\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterRenderer.cpp">
+      <Filter>Quelldateien\renderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityRenderer.cpp">
+      <Filter>Quelldateien\renderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticShader.cpp">
+      <Filter>Quelldateien\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Quelldateien\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Quelldateien\models</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader.cpp">
+      <Filter>Quelldateien\renderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Quelldateien\renderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Quelldateien\renderEngine\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Quelldateien\renderEngine\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexArray.cpp">
+      <Filter>Quelldateien\renderEngine\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Quelldateien\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="EventListener.cpp">
+      <Filter>Quelldateien\eventSystem</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Window.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Headerdateien\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterRenderer.h">
+      <Filter>Headerdateien\renderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityRenderer.h">
+      <Filter>Headerdateien\renderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticShader.h">
+      <Filter>Headerdateien\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Headerdateien\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Headerdateien\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
+      <Filter>Headerdateien\renderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Headerdateien\renderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Headerdateien\renderEngine\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Headerdateien\renderEngine\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexArray.h">
+      <Filter>Headerdateien\renderEngine\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBufferLayout.h">
+      <Filter>Headerdateien\renderEngine\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Headerdateien\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="EventListener.h">
+      <Filter>Headerdateien\eventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Headerdateien\entities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
