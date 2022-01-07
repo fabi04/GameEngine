@@ -96,12 +96,12 @@ int main(int argc, char* argv[])
 	va.addBuffer(vb, layout);
 
 
-	Texture texture("C://Users//fabia//Downloads//container2.png");
-    Texture specular("C://Users//fabia//Downloads//specular.png");
+	Texture texture("..//res//container2.png");
+    Texture specular("..//res//specular.png");
 
 
 
-	StaticShader shader = StaticShader("C://Users//fabia//source//repos//GameEngine//GameEngine//vertexShader.vs.txt", "C://Users//fabia//source//repos//GameEngine//GameEngine//fragmentShader.fs.txt");
+	StaticShader shader = StaticShader("vertexShader.vs.txt", "fragmentShader.fs.txt");
 	MasterRenderer* renderer = MasterRenderer::getInstance(&shader);
     Material mat = { texture, specular, 64.0f, {0.5f, 0.5f, 0.5f} };
     Model model(va, mat);
