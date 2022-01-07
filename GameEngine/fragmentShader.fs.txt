@@ -15,7 +15,6 @@ struct DirLight
 	vec3 diffuse;
 	vec3 specular;
 };
-uniform DirLight dirLight;
 
 struct PointLight
 {
@@ -33,7 +32,7 @@ uniform PointLight pointLights[NR_POINT_LIGHTS];
 
 uniform vec3 viewPos;
 uniform Material material;
-
+uniform DirLight dirLight;
 in vec2 v_texCoord;
 in vec3 normal;
 in vec3 fragPos;
@@ -45,11 +44,11 @@ void main()
 {
 	vec3 norm = normalize(normal);
 	vec3 viewDir = normalize(viewPos - fragPos);
-	vec3 result = vec3(1.0); // = calcDirLight(dirLight, norm, viewDir);
-	for(int i =  0; i < NR_POINT_LIGHTS; i++)
-	{
-		result += calcPointLight(pointLights[i], norm, fragPos, viewDir);
-	}
+	vec3 result; // = calcDirLight(dirLight, norm, viewDir);
+	//for(int i =  0; i < NR_POINT_LIGHTS; i++)
+	//{
+	//	result += calcPointLight(pointLights[i], norm, fragPos, viewDir);
+	//}
 	FragColor = vec4(result, 1.0);
 }
 
