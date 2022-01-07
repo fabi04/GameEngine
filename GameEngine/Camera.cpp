@@ -14,19 +14,19 @@ void Camera::processInput()
 {
 	float delta = (SDL_GetTicks() - _lastTickCount) / 1000.0f;
 	_lastTickCount = SDL_GetTicks();
-	if (_listener->getKeyDown(SDL_SCANCODE_DOWN))
+	if (_listener->getKeyDown(SDL_SCANCODE_DOWN) or _listener->getKeyDown(SDL_SCANCODE_S))
 	{
 		processKeyboard(BACKWARD, delta);
 	}
-	else if(_listener->getKeyDown(SDL_SCANCODE_UP))
+	else if(_listener->getKeyDown(SDL_SCANCODE_UP) or _listener->getKeyDown(SDL_SCANCODE_W))
 	{
 		processKeyboard(FORWARD, delta);
 	}
-	else if(_listener->getKeyDown(SDL_SCANCODE_LEFT))
+	else if(_listener->getKeyDown(SDL_SCANCODE_LEFT) or _listener->getKeyDown(SDL_SCANCODE_A))
 	{
 		processKeyboard(LEFT, delta);
 	}
-	else if(_listener->getKeyDown(SDL_SCANCODE_RIGHT))
+	else if(_listener->getKeyDown(SDL_SCANCODE_RIGHT) or _listener->getKeyDown(SDL_SCANCODE_D))
 	{
 		processKeyboard(RIGHT, delta);
 	}
