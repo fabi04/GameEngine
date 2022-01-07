@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
 
 
 
-	StaticShader shader = StaticShader("vertexShader.vs.txt", "fragmentShader.fs.txt");
+	StaticShader shader = StaticShader("vertexShader.vs", "fragmentShader.fs");
 	MasterRenderer* renderer = MasterRenderer::getInstance(&shader);
     Material mat = { texture, specular, 64.0f, {0.5f, 0.5f, 0.5f} };
     Model model(va, mat);
