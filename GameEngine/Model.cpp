@@ -2,9 +2,9 @@
 
 void BaseModel::bind() const
 {
+	_material.diffuseMap->bind();
+	_material.specularMap->bind(1);
 	_va.bind();
-	_material.diffuseMap.bind();
-	_material.specularMap.bind();
 
 }
 

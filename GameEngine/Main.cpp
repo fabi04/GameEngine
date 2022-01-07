@@ -96,22 +96,22 @@ int main(int argc, char* argv[])
 	va.addBuffer(vb, layout);
 
 
-	Texture texture("..//res//container2.png");
-    Texture specular("..//res//specular.png");
+	Texture texture("C://Users//fabia//source//repos//GameEngine//res//container2.png");
+    Texture specular("C://Users//fabia//source//repos//GameEngine//res//specular.png");
 
 
 
 	StaticShader shader = StaticShader("vertexShader.vs", "fragmentShader.fs");
 	MasterRenderer* renderer = MasterRenderer::getInstance(&shader);
-    Material mat = { texture, specular, 64.0f};
-    Model model(va, mat);
+    Material mat = { &texture, &specular, 64.0f};
+    Model model_(va, mat);
     PointLight light = {glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032};
-    PointLight light2 = { glm::vec3(1.2f, -1.0f, -2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f) , 1.0f, 0.09f, 0.032};
-
+   // PointLight light2 = { glm::vec3(1.2f, -1.0f, -2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f) , 1.0f, 0.09f, 0.032};
+    DirLight dirLight = {glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.4f, 0.04f, 0.04f), glm::vec3(0.5f, 0.5f, 0.5f)};
 	Camera camera;
 	while (!window->isClosed())
 	{
-		renderer->render(model, {light, light2});
+        renderer->render(model_, { light }, {dirLight});
 		camera.processInput();
 		shader.loadProjectionMatrix(glm::perspective(glm::radians(45.0f), (float) window->getHeight() / (float) window->getWidth(), 0.1f, 100.0f));
 		shader.loadViewMatrix(camera);

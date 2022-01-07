@@ -8,7 +8,7 @@ void StaticShader::getAllUniformLocations()
 	_location_viewMatrix = Shader::getUniformLocation("view");
 	_location_materialDiffuse = Shader::getUniformLocation("material.diffuse");
 	_location_materialSpecular = Shader::getUniformLocation("material.specular");
-	_location_materialShininess= Shader::getUniformLocation("material.shininess");
+	_location_materialShininess = Shader::getUniformLocation("material.shininess");
 
 	for (unsigned int i = 0; i < MAXLIGHTS; i++)
 	{
@@ -34,6 +34,12 @@ void StaticShader::getAllUniformLocations()
 		quadratic << "pointLights[" << i << "].quadratic";
 		_location_lightQuadratic[i] = Shader::getUniformLocation(quadratic.str());
 	}
+
+	/*_location_lightPos[0] = Shader::getUniformLocation("light.position");
+	_location_lightAmbient[0] = Shader::getUniformLocation("light.ambient");
+	_location_lightDiffuse[0] = Shader::getUniformLocation("light.diffuse");
+	_location_lightSpecular[0] = Shader::getUniformLocation("light.specular");*/
+
 }
 
 void StaticShader::bindAttributes()
@@ -99,13 +105,25 @@ void StaticShader::loadPointLights(const std::vector<PointLight>& lights)
 			Shader::loadFloat(_location_lightLinear[i], lights[i].linear);
 			Shader::loadFloat(_location_lightQuadratic[i], lights[i].quadratic);
 		}
-		else
+		/*else
 		{
 			Shader::loadVec3(_location_lightPos[i], {});
 			Shader::loadVec3(_location_lightDiffuse[i], {});
 			Shader::loadVec3(_location_lightAmbient[i], {});
 			Shader::loadVec3(_location_lightSpecular[i], {});
-		}
+		}*/
+	}
+}
+
+void StaticShader::loadDirLights(const std::vector<DirLight>& lights) 
+{
+	for (const DirLight& light : lights)
+	{
+		Shader::loadVec3(Shader::getUniformLocation("dirLight.direction"), light.direction);
+		Shader::loadVec3(Shader::getUniformLocation("dirLight.ambient"), light.ambient);
+		Shader::loadVec3(Shader::getUniformLocation("dirLight.diffuse"), light.diffuse);
+		Shader::loadVec3(Shader::getUniformLocation("dirLight.specular"), light.specular);
+
 	}
 }
 

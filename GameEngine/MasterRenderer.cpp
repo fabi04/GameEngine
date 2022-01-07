@@ -29,20 +29,22 @@ void MasterRenderer::prepareInstance(const Model& model)
 	_shader->loadFloat(_shader->getUniformLocation("tex"), 0);
 }
 
-void MasterRenderer::render(const Model& model, const std::vector<PointLight>& lights)
+void MasterRenderer::render(const Model& model, const std::vector<PointLight>& lights, const std::vector<DirLight>& dirLights)
 {
 	_shader->start();
 	_shader->loadPointLights(lights);
+	_shader->loadDirLights(dirLights);
 	_shader->loadMaterial(model);
 	prepare();	
 	model.bind();
 	glDrawArrays(GL_TRIANGLES, 0, model.getVertexCount());
 }
 
-void MasterRenderer::render(const IndexedModel& model, const std::vector<PointLight>& lights)
+void MasterRenderer::render(const IndexedModel& model, const std::vector<PointLight>& lights, const std::vector<DirLight>& dirLights)
 {
 	_shader->start();
 	_shader->loadPointLights(lights);
+	_shader->loadDirLights(dirLights);
 	_shader->loadMaterial(model);
 	prepare();
 	model.bind();

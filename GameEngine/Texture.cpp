@@ -1,8 +1,7 @@
 #include "Texture.h"
 #include <GL/glew.h>
 #include <stb_image.h>
-
-int Texture::slot = 0;
+#include <iostream>
 
 Texture::Texture(const std::string& path) : _rendererID(0), _filePath(path), _localBuffer(nullptr), _width(0), _height(0), _bpp(0)
 {
@@ -21,22 +20,24 @@ Texture::Texture(const std::string& path) : _rendererID(0), _filePath(path), _lo
 	{
 		stbi_image_free(_localBuffer);
 	}
-
-	slot++;
+	else
+	{
+		std::cout << "failed to load texture" << std::endl;
+	}
 }
 
 Texture::~Texture()
 {
 	glDeleteTextures(1, &_rendererID);
-	slot--;
 }
 
-void Texture::bind() const
+void Texture::bind(const int slot) const
 {
-	glActiveTexture(GL_TEXTURE + slot);
+	glActiveTexture(GL_TEXTURE0 + slot );
 	glBindTexture(GL_TEXTURE_2D, _rendererID);
 }
 
 void Texture::unbind() const
 {
+	glBindTexture(GL_TEXTURE_2D, 0);
 }

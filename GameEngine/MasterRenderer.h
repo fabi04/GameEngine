@@ -21,8 +21,8 @@ public:
 	void operator=(const MasterRenderer& other) = delete;
 
 	static MasterRenderer* getInstance(StaticShader* shader);
-	void render(const Model& model, const std::vector<PointLight>& lights);
-	void render(const IndexedModel& model, const std::vector<PointLight>& lights);
+	void render(const Model& model, const std::vector<PointLight>& lights, const std::vector<DirLight>& dirLights);
+	void render(const IndexedModel& model, const std::vector<PointLight>& lights, const std::vector<DirLight>& dirLights);
 };
 
 #endif

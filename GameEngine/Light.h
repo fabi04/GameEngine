@@ -21,18 +21,19 @@ struct PointLight : Light
 		: Light(pos), ambient(ambient), specular(specular), diffuse(diffuse), constant(constant), linear(linear), quadratic(quadratic) {};
 };
 
-struct DirLight : Light
+struct DirLight
 {
 	glm::vec3 direction;
 	glm::vec3 ambient;
 	glm::vec3 diffuse;
 	glm::vec3 specular;
+
 };
 
 struct Material
 {
-	Texture diffuseMap;
-	Texture specularMap;
+	Texture* diffuseMap;
+	Texture* specularMap;
 	float shininess;
 };
 #endif
