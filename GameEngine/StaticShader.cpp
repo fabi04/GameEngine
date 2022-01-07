@@ -98,7 +98,6 @@ void StaticShader::loadPointLights(const std::vector<PointLight>& lights)
 			Shader::loadFloat(_location_lightConstant[i], lights[i].constant);
 			Shader::loadFloat(_location_lightLinear[i], lights[i].linear);
 			Shader::loadFloat(_location_lightQuadratic[i], lights[i].quadratic);
-
 		}
 		else
 		{

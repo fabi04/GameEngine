@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
 
 	StaticShader shader = StaticShader("vertexShader.vs", "fragmentShader.fs");
 	MasterRenderer* renderer = MasterRenderer::getInstance(&shader);
-    Material mat = { texture, specular, 64.0f, {0.5f, 0.5f, 0.5f} };
+    Material mat = { texture, specular, 64.0f};
     Model model(va, mat);
     PointLight light = {glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032};
     PointLight light2 = { glm::vec3(1.2f, -1.0f, -2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f) , 1.0f, 0.09f, 0.032};

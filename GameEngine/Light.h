@@ -34,6 +34,5 @@ struct Material
 	Texture diffuseMap;
 	Texture specularMap;
 	float shininess;
-	glm::vec3 specular;
 };
 #endif
