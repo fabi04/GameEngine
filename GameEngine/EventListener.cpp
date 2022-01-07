@@ -33,7 +33,6 @@ void EventListener::getUserKeyInput()
     {
         switch (event.type)
         {
-        case SDLK_ESCAPE: SDL_SetRelativeMouseMode(SDL_FALSE);
         case SDL_KEYDOWN: keyDown(); break;
         case SDL_KEYUP: keyUp(); break;
         }

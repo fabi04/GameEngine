@@ -11,6 +11,7 @@ Window::Window(const char* name, const int sizeX, const int sizeY) : _height(siz
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	_window = SDL_CreateWindow(name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, sizeX, sizeY, SDL_WINDOW_OPENGL);
 	_glContext = SDL_GL_CreateContext(_window);
+	_listener = EventListener::getInstance();
 }
 
 Window::~Window()
@@ -20,6 +21,11 @@ Window::~Window()
 
 void Window::update()
 {
+	if (_listener->getKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		SDL_SetRelativeMouseMode(SDL_FALSE);
+		SDL_CaptureMouse(SDL_FALSE);
+	}
 	SDL_GL_SwapWindow(_window);
 }
 

@@ -3,12 +3,14 @@
 #define WINDOW
 
 #include <SDL.h>
+#include "EventListener.h"
 
 class Window
 {
 private:
 	SDL_Window* _window;
 	SDL_GLContext _glContext;
+	EventListener* _listener;
 	unsigned int _height;
 	unsigned int _width;
 public:
