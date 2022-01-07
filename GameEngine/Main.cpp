@@ -97,18 +97,21 @@ int main(int argc, char* argv[])
 
 
 	Texture texture("C://Users//fabia//Downloads//container2.png");
+    Texture specular("C://Users//fabia//Downloads//specular.png");
+
 
 
 	StaticShader shader = StaticShader("C://Users//fabia//source//repos//GameEngine//GameEngine//vertexShader.vs.txt", "C://Users//fabia//source//repos//GameEngine//GameEngine//fragmentShader.fs.txt");
 	MasterRenderer* renderer = MasterRenderer::getInstance(&shader);
-    Material mat = { 0, 64.0f, {0.5f, 0.5f, 0.5f} };
-    Model model(va, texture, mat);
-    PointLight light = {glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f)};
+    Material mat = { texture, specular, 64.0f, {0.5f, 0.5f, 0.5f} };
+    Model model(va, mat);
+    PointLight light = {glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032};
+    PointLight light2 = { glm::vec3(1.2f, -1.0f, -2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f) , 1.0f, 0.09f, 0.032};
 
 	Camera camera;
 	while (!window->isClosed())
 	{
-		renderer->render(model, {light});
+		renderer->render(model, {light, light2});
 		camera.processInput();
 		shader.loadProjectionMatrix(glm::perspective(glm::radians(45.0f), (float) window->getHeight() / (float) window->getWidth(), 0.1f, 100.0f));
 		shader.loadViewMatrix(camera);

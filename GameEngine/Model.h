@@ -13,10 +13,9 @@ class BaseModel
 {
 protected:
 	VertexArray _va;
-	Texture _texture;
 	Material _material;
 public:
-	BaseModel(const VertexArray& va, const Texture& texture, const Material& material) : _va(va), _texture(texture), _material(material) {};
+	BaseModel(const VertexArray& va, const Material& material) : _va(va), _material(material) {};
 	void bind() const;
 	void unbind() const;
 	Material getMaterial() const;
@@ -27,7 +26,7 @@ class Model : public BaseModel
 {
 public:
 	unsigned int getVertexCount() const override;
-	Model(const VertexArray& va, const Texture& texture, const Material& material) : BaseModel(va, texture, material) {};
+	Model(const VertexArray& va, const Material& material) : BaseModel(va, material) {};
 };
 
 class IndexedModel : public BaseModel
@@ -35,7 +34,7 @@ class IndexedModel : public BaseModel
 private:
 	IndexBuffer _ib;
 public:
-	IndexedModel(const VertexArray& vertexArr, const IndexBuffer& indexBuff, const Texture& texture, const Material& material) : _ib(indexBuff), BaseModel(vertexArr, texture, material) { };
+	IndexedModel(const VertexArray& vertexArr, const IndexBuffer& indexBuff,  const Material& material) : _ib(indexBuff), BaseModel(vertexArr, material) { };
 	unsigned int getVertexCount() const override;
 };
 

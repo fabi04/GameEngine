@@ -3,13 +3,14 @@
 void BaseModel::bind() const
 {
 	_va.bind();
-	_texture.bind();
+	_material.diffuseMap.bind();
+	_material.specularMap.bind();
+
 }
 
 void BaseModel::unbind() const
 {
 	_va.unbind();
-	_texture.unbind();
 }
 
 Material BaseModel::getMaterial() const

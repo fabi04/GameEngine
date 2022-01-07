@@ -18,6 +18,9 @@ private:
 	unsigned int _location_lightAmbient[MAXLIGHTS];
 	unsigned int _location_lightSpecular[MAXLIGHTS];
 	unsigned int _location_lightDiffuse[MAXLIGHTS];
+	unsigned int _location_lightConstant[MAXLIGHTS];
+	unsigned int _location_lightLinear[MAXLIGHTS];
+	unsigned int _location_lightQuadratic[MAXLIGHTS];
 	unsigned int _location_materialDiffuse;
 	unsigned int _location_materialSpecular;
 	unsigned int _location_materialShininess;

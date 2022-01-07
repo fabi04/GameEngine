@@ -2,6 +2,8 @@
 #include <GL/glew.h>
 #include <stb_image.h>
 
+int Texture::slot = 0;
+
 Texture::Texture(const std::string& path) : _rendererID(0), _filePath(path), _localBuffer(nullptr), _width(0), _height(0), _bpp(0)
 {
 	stbi_set_flip_vertically_on_load(1);
@@ -19,16 +21,19 @@ Texture::Texture(const std::string& path) : _rendererID(0), _filePath(path), _lo
 	{
 		stbi_image_free(_localBuffer);
 	}
+
+	slot++;
 }
 
 Texture::~Texture()
 {
 	glDeleteTextures(1, &_rendererID);
+	slot--;
 }
 
-void Texture::bind(unsigned int slot) const
+void Texture::bind() const
 {
-	glActiveTexture(GL_TEXTURE0 + slot);
+	glActiveTexture(GL_TEXTURE + slot);
 	glBindTexture(GL_TEXTURE_2D, _rendererID);
 }
 
