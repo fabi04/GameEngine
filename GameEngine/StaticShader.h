@@ -5,7 +5,7 @@
 #include "Camera.h"
 #include "Light.h"
 #include "Model.h"
-#define MAXLIGHTS 2
+#define MAXLIGHTS 1
 
 class StaticShader : public Shader
 {
