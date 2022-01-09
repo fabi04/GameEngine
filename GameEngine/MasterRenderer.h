@@ -13,16 +13,21 @@ protected:
 private:
 	StaticShader* _shader;
 	static std::shared_ptr<MasterRenderer> _instance;
+	std::vector<PointLight> _lights;
+	std::vector<DirLight> _dirLights;
+	std::vector<Model> _models;
+
 	void prepare() const;
 	void cleanUp() const;
 	void prepareInstance(const Model& model) ;
 public:
 	MasterRenderer(MasterRenderer& other) = delete;
 	void operator=(const MasterRenderer& other) = delete;
-
+	template <class T> void add(const T& instance);
 	static MasterRenderer* getInstance(StaticShader* shader);
-	void render(const Model& model, const std::vector<PointLight>& lights, const std::vector<DirLight>& dirLights);
-	void render(const IndexedModel& model, const std::vector<PointLight>& lights, const std::vector<DirLight>& dirLights);
+	void prepareRender() const;
+	void render(const Model& model);
+	//void render(const IndexedModel& model);
 };
 
 #endif

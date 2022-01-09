@@ -35,7 +35,7 @@ public:
 	void loadLights(const std::vector<Light>& lights);
 	void loadPointLights(const std::vector<PointLight>& lights);
 	void loadDirLights(const std::vector<DirLight>& lights);
-	void loadMaterial(const BaseModel& model);
+	void loadMaterial(const Model& model);
 };
 
 #endif

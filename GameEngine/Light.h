@@ -34,6 +34,6 @@ struct Material
 {
 	Texture* diffuseMap;
 	Texture* specularMap;
-	float shininess;
+	float shininess = 16.0f;
 };
 #endif

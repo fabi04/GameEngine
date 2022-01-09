@@ -33,91 +33,47 @@
 
 int main(int argc, char* argv[])
 {
-	Window* window = new Window("game", 800, 600);
+	Window* window = new Window("game", 1000, 800);
 	glewExperimental = GL_TRUE;
 	glewInit();
 
-    float vertices[] = {
-        // positions          // normals           // texture coords
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
 
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
+    Texture texture("..//res//container2.png");
+    Texture specular("..//res//specular.png");
 
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
-
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
-    };
-
-	int indices[] = {
-		0, 1, 3, 1, 2, 3
-	};
-
-
-	VertexArray va(36);
-	VertexBuffer vb(vertices, 6 * 8 * 6 * sizeof(float));
+    Material mat = { &texture, &specular, 64.0f };
+	std::vector<float> vertices;
+    loadOBJ("..//res//monkey.obj", vertices);
+	VertexArray va(vertices.size() / 8);
+	VertexBuffer vb(&vertices[0], vertices.size() * sizeof(float));
 	VertexBufferLayout layout;
 	layout.push<float>(3);
 	layout.push<float>(3);
     layout.push<float>(2);
 	va.addBuffer(vb, layout);
 
-
-	Texture texture("C://Users//fabia//source//repos//GameEngine//res//container2.png");
-    Texture specular("C://Users//fabia//source//repos//GameEngine//res//specular.png");
-
-
-
 	StaticShader shader = StaticShader("vertexShader.vs", "fragmentShader.fs");
 	MasterRenderer* renderer = MasterRenderer::getInstance(&shader);
-    Material mat = { &texture, &specular, 64.0f};
     Model model_(va, mat);
     PointLight light = {glm::vec3(1.2f, 1.0f, 2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032};
    // PointLight light2 = { glm::vec3(1.2f, -1.0f, -2.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f) , 1.0f, 0.09f, 0.032};
     DirLight dirLight = {glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.4f, 0.04f, 0.04f), glm::vec3(0.5f, 0.5f, 0.5f)};
 	Camera camera;
+    glm::vec3 pos(2.0f, 2.0f, 2.0f);
+    Entity::Entity3D ent(pos, std::make_shared<Model>(model_));
+    renderer->add<PointLight>(light);
+    renderer->add<DirLight>(dirLight);
+	renderer->add<Model>(model_);
+    renderer->prepareRender();
 	while (!window->isClosed())
 	{
-        renderer->render(model_, { light }, {dirLight});
+        renderer->render(model_);
 		camera.processInput();
 		shader.loadProjectionMatrix(glm::perspective(glm::radians(45.0f), (float) window->getHeight() / (float) window->getWidth(), 0.1f, 100.0f));
 		shader.loadViewMatrix(camera);
         shader.loadVec3(shader.getUniformLocation("viewPos"), camera.getPos());
 		glm::mat4 model = glm::mat4(1.0f);
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		//model = glm::translate(model, ent.getPos());
 		shader.loadModelMatrix(model);
 		window->update();
 	}

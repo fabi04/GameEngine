@@ -127,12 +127,11 @@ void StaticShader::loadDirLights(const std::vector<DirLight>& lights)
 	}
 }
 
-void StaticShader::loadMaterial(const BaseModel& model)
+void StaticShader::loadMaterial(const Model& model)
 {
-	Material material = model.getMaterial();
 	Shader::loadInt(_location_materialDiffuse, 0);
 	Shader::loadInt(_location_materialSpecular, 1);
-	Shader::loadFloat(_location_materialShininess, material.shininess);
+	Shader::loadFloat(_location_materialShininess, model.getMaterial().shininess);
 
 }
 

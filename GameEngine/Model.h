@@ -8,34 +8,38 @@
 #include "Texture.h"
 #include "Light.h"
 
-
-class BaseModel
+class RawModel
 {
 protected:
 	VertexArray _va;
+public:
+	RawModel(const VertexArray& va) : _va(va) {};
+	virtual void bind() const;
+	virtual void unbind() const;
+	virtual unsigned int getVertexCount() const;
+};
+
+class Model : public RawModel
+{
+private:
 	Material _material;
 public:
-	BaseModel(const VertexArray& va, const Material& material) : _va(va), _material(material) {};
-	void bind() const;
-	void unbind() const;
+	Model(const VertexArray& va, const Material& material) : RawModel(va), _material(material) {};
+	Model(const VertexArray& va) : RawModel(va) {};
 	Material getMaterial() const;
-	virtual unsigned int getVertexCount() const = 0;
+	void bind() const override;
+	void unbind() const override;
 };
 
-class Model : public BaseModel
-{
-public:
-	unsigned int getVertexCount() const override;
-	Model(const VertexArray& va, const Material& material) : BaseModel(va, material) {};
-};
-
-class IndexedModel : public BaseModel
+class IndexedModel : public RawModel
 {
 private:
 	IndexBuffer _ib;
+	Material _material;
 public:
-	IndexedModel(const VertexArray& vertexArr, const IndexBuffer& indexBuff,  const Material& material) : _ib(indexBuff), BaseModel(vertexArr, material) { };
-	unsigned int getVertexCount() const override;
+	IndexedModel(const VertexArray& vertexArr, const IndexBuffer& indexBuff,  const Material& material) : _ib(indexBuff), _material(material), RawModel(vertexArr) { };
+	Material getMaterial() const;
+	unsigned int getVertexCount() const;
 };
 
 #endif

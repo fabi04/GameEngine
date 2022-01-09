@@ -1,29 +1,47 @@
 #include "Model.h"
 
-void BaseModel::bind() const
+void RawModel::bind() const
 {
-	_material.diffuseMap->bind();
-	_material.specularMap->bind(1);
 	_va.bind();
 
 }
 
-void BaseModel::unbind() const
+void RawModel::unbind() const
 {
 	_va.unbind();
 }
 
-Material BaseModel::getMaterial() const
-{
-	return _material;
-}
-
-unsigned int Model::getVertexCount() const
+unsigned int RawModel::getVertexCount() const
 {
 	return _va.getVertexCount();
+}
+
+
+
+void Model::bind() const
+{
+	_va.bind();
+	_material.diffuseMap->bind();
+	_material.specularMap->bind(1);
+}
+
+void Model::unbind() const
+{
+	_va.unbind();
+	_material.diffuseMap->unbind();
+	_material.specularMap->unbind();
+}
+
+Material Model::getMaterial() const
+{
+	return _material;
 }
 
 unsigned int IndexedModel::getVertexCount() const
 {
 	return _ib.getCount();
+}
+Material IndexedModel::getMaterial() const
+{
+	return _material;
 }
