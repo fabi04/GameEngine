@@ -12,3 +12,7 @@ Following languages and libraries were used:
 * [C++](https://devdocs.io/cpp/)
 * [SDL](https://www.libsdl.org/)
 * [GLEW](https://glew.sourceforge.net/)
+
+* <!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+Followed the tutorial (https://learnopengl.com/)
